@@ -4,12 +4,12 @@ A production-ready Python chatbot with fully programmable personality system. Us
 
 ## Features
 
-- 🎭 **Fully Customizable Personality** - Program any character or personality you want
-- ⚡ **Fast Responses** - Uses Groq API (200-500ms response time)
-- 🚀 **Automatic Rate Limiting** - Never hits rate limits with intelligent throttling
-- 💬 **Chat Channel Support** - Can respond in Discord channels or terminal
-- 🐍 **Simple Python** - Easy to understand and modify
-- 📦 **Production Ready** - Fully tested and optimized
+- **Fully Customizable Personality** - Program any character or personality you want
+- **Fast Responses** - Uses Groq API (200-500ms response time)
+- **Automatic Rate Limiting** - Never hits rate limits with intelligent throttling
+- **Chat Channel Support** - Can respond in Discord channels or terminal
+- **Simple Python** - Easy to understand and modify
+- **Production Ready** - Fully tested and optimized
 
 ## Quick Start
 
@@ -78,11 +78,11 @@ Type your message and press Enter. Type `quit` to exit.
 - 14,400 requests per day
 
 **Optimizations Applied:**
-- ✅ Automatic request throttling (2.5s between requests)
-- ✅ Token-aware throttling (adjusts for large prompts)
-- ✅ Minimal conversation history (system + last 4 exchanges)
-- ✅ Automatic rate limit detection and retry
-- ✅ Token-efficient message formatting
+- Automatic request throttling (2.5s between requests)
+- Token-aware throttling (adjusts for large prompts)
+- Minimal conversation history (system + last 4 exchanges)
+- Automatic rate limit detection and retry
+- Token-efficient message formatting
 
 The bot automatically handles rate limits - you'll never hit them!
 
