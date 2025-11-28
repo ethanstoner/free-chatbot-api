@@ -71,6 +71,21 @@ See `personality.example.py` for detailed examples and templates.
 
 ### 5. Run Discord Bot
 
+#### Option A: Docker (Recommended)
+
+```bash
+# Build and start
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop
+docker-compose down
+```
+
+#### Option B: Direct Python
+
 ```bash
 python discord_bot.py
 ```
@@ -144,6 +159,8 @@ You can create any personality:
 - `personality.example.py` - Example personality templates
 - `.env.example` - Environment variables template
 - `requirements.txt` - Python dependencies
+- `Dockerfile` - Docker image definition
+- `docker-compose.yml` - Docker Compose configuration
 - `shared_rate_limiter.py` - Rate limiting utilities (for advanced multi-bot setups)
 - `turn_manager.py` - Turn management for multiple bots (for advanced multi-bot setups)
 

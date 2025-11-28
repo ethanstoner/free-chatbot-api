@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  chatbot:
+    build: .
+    container_name: free-chatbot-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    # Resource limits (optional - adjust as needed)
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 512M
+        reservations:
+          cpus: '0.25'
+          memory: 256M
