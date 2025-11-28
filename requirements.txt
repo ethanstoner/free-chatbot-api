@@ -1,9 +1,10 @@
-# Core dependencies (required for chat.py)
+# Core dependencies
 requests==2.31.0
 python-dotenv==1.0.0
 
-# Optional dependencies (for Discord bot functionality)
-# Uncomment if using shared_rate_limiter.py or turn_manager.py with Discord bots
-# discord.py==2.3.2
+# Discord bot dependencies (required for discord_bot.py)
+discord.py==2.3.2
+
+# Optional dependencies (for advanced multi-bot setups)
 # flask==3.0.0
 # flask-cors==4.0.0
