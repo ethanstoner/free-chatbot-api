@@ -25,3 +25,24 @@ turn_state
 rate_limit_state
 rate_limit.lock
 turn_lock
+.rate_limit.lock
+.rate_limit_state
+.turn_lock
+.turn_state
+
+# Test files
+test_*.py
+*_test.py
+*test*.py
+
+# Internal documentation
+PROJECT_STATUS.md
+TEST_RESULTS.md
+PRODUCTION_READY.md
+
+# Development tools
+qa-check.sh
+.cursorignore
+
+# Scripts (optional - keep if they're useful for users)
+# scripts/
