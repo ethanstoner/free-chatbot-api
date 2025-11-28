@@ -1,22 +1,67 @@
-# Free Chatbot API - Song Hui Character
+# Free Chatbot API
 
-A simple Python chatbot featuring Song Hui, a 53-year-old Chinese man from Guangdong with an extensive personality and backstory.
+A production-ready Python chatbot with fully programmable personality system. Uses Groq API for fast, free AI responses. Perfect for creating custom chatbots with any personality you want.
+
+## Features
+
+- 🎭 **Fully Customizable Personality** - Program any character or personality you want
+- ⚡ **Fast Responses** - Uses Groq API (200-500ms response time)
+- 🚀 **Automatic Rate Limiting** - Never hits rate limits with intelligent throttling
+- 💬 **Chat Channel Support** - Can respond in Discord channels or terminal
+- 🐍 **Simple Python** - Easy to understand and modify
+- 📦 **Production Ready** - Fully tested and optimized
 
 ## Quick Start
 
-### Windows (Double-Click to Run)
-1. **Double-click `run_chat.bat`** - Runs the chatbot through WSL
-2. **Or double-click `run_chat_setup.bat`** - Sets up everything first, then runs
+### 1. Setup
 
-### Manual Run (WSL/Linux)
-1. **Run the chatbot:**
+```bash
+# Clone the repository
+git clone https://github.com/ethanstoner/free-chatbot-api.git
+cd free-chatbot-api
+
+# Create virtual environment
+python3 -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### 2. Configure
+
+1. **Copy `.env.example` to `.env`:**
    ```bash
-   cd "/home/ethan/cursor projects/free-chatbot-api"
-   source venv/bin/activate
-   python chat.py
+   cp .env.example .env
    ```
 
-2. **Start chatting!** Type your message and press Enter. Type `quit` to exit.
+2. **Add your Groq API key to `.env`:**
+   ```
+   GROQ_API_KEY=your_groq_api_key_here
+   ```
+   Get your free API key at: https://console.groq.com/
+
+### 3. Customize Personality
+
+Edit `chat.py` and modify the personality variables:
+
+```python
+PERSONALITY_BACKGROUND = """Your character's background and history"""
+
+PERSONALITY_CURRENT_STATE = """How your character acts now"""
+
+PERSONALITY_RULES = """Speech patterns and behavior rules"""
+```
+
+See `personality.example.py` for detailed examples and templates.
+
+### 4. Run
+
+```bash
+python chat.py
+```
+
+Type your message and press Enter. Type `quit` to exit.
 
 ## Rate Limits & Optimization
 
@@ -26,59 +71,61 @@ A simple Python chatbot featuring Song Hui, a 53-year-old Chinese man from Guang
 - 14,400 requests per day
 
 **Optimizations Applied:**
-- ✅ **Automatic request throttling** - Prevents rate limits before they happen
-- ✅ **Token-aware throttling** - Adjusts delay based on prompt size
-- ✅ Minimal conversation history (system + last exchange only)
-- ✅ Reduced max_tokens to 60 per response
-- ✅ Automatic rate limit handling with smart retry
+- ✅ Automatic request throttling (2.5s between requests)
+- ✅ Token-aware throttling (adjusts for large prompts)
+- ✅ Minimal conversation history (system + last 4 exchanges)
+- ✅ Automatic rate limit detection and retry
 - ✅ Token-efficient message formatting
 
-**Automatic Throttling:**
-- The bot automatically waits 2.5 seconds between requests (prevents request limits)
-- For large prompts (>4000 tokens), it waits longer to prevent token-per-minute limits
-- You'll see a message like "⏳ Throttling: waiting Xs..." when it's waiting
-- This ensures you **never hit rate limits** - it's all handled automatically!
+The bot automatically handles rate limits - you'll never hit them!
 
-**If rate limits occur (rare):**
-- The bot automatically detects and waits
-- It retries automatically after the wait period
-- Clear error messages explain what's happening
+## Customizing Personality
 
-## Character: Song Hui
+### Simple Example
 
-Song Hui is a 53-year-old Chinese man from Guangdong province with:
-- Extensive backstory and lore
-- Very poor English (broken grammar, Chinese sentence structure)
-- Obsession with finding Corey James Redmond (from Great Oak High School)
-- Creepy but well-meaning personality
-- Full of strange wisdom
-- Loves CCP, Instagram, TikTok
-- Favorite hobby: throwing rocks into holes full of water
+```python
+PERSONALITY_BACKGROUND = """You are a helpful assistant."""
+
+PERSONALITY_CURRENT_STATE = """You respond naturally and helpfully."""
+
+PERSONALITY_RULES = """Keep responses concise and friendly."""
+```
+
+### Complex Example
+
+See `personality.example.py` for detailed examples including:
+- Character backstories
+- Speech patterns
+- Behavior rules
+- Response guidelines
+
+You can create any personality:
+- Characters from books/movies/shows
+- Historical figures
+- Fictional characters
+- Custom creations
 
 ## Files
 
-- `chat.py` - Main chatbot script with Song Hui personality
-- `run_chat.bat` - Windows launcher (double-click to run via WSL)
-- `run_chat_setup.bat` - Windows launcher with auto-setup
-- `server.py` - Optional API server (if you need HTTP endpoints)
-- `.env` - Your API keys (gitignored, safe)
+- `chat.py` - Main chatbot script (customize personality here)
+- `personality.example.py` - Example personality templates
+- `.env.example` - Environment variables template
 - `requirements.txt` - Python dependencies
+- `.env` - Your API keys (gitignored, create from .env.example)
 
 ## API Key
 
-Your Groq API key is stored in `.env`:
-- Free tier: 30 requests/minute, 14,400 requests/day
-- Response time: ~200-500ms (very fast!)
-- No credit card required
-- Get your key at: https://console.groq.com/
+Get your free Groq API key:
+1. Go to https://console.groq.com/
+2. Sign up (no credit card required)
+3. Create an API key
+4. Add it to your `.env` file
 
-## Notes
-
-- Uses `llama-3.1-8b-instant` model (fastest, smallest)
-- Optimized for efficiency (60 tokens max, minimal history)
-- Extensive personality with detailed backstory (~5000 tokens)
-- **Automatic throttling** - Never hits rate limits!
-- Production-ready and fully tested
+**Free tier includes:**
+- 30 requests/minute
+- ~6000 tokens/minute
+- 14,400 requests/day
+- ~200-500ms response time
 
 ## Testing
 
@@ -88,4 +135,13 @@ python test_rate_limits.py    # Basic functionality tests
 python test_integration.py     # Full conversation simulation
 ```
 
-See `PRODUCTION_READY.md` for detailed testing results and production readiness status.
+## Notes
+
+- Uses `llama-3.1-8b-instant` model (fastest, smallest)
+- Optimized for efficiency (200 tokens max, minimal history)
+- Automatic throttling - Never hits rate limits!
+- Production-ready and fully tested
+
+## License
+
+MIT

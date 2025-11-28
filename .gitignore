@@ -16,3 +16,12 @@ ENV/
 *.key
 *.pem
 secrets/
+
+# Personal bot files and locks
+message_locks/
+*.lock
+discord_bot.log
+turn_state
+rate_limit_state
+rate_limit.lock
+turn_lock
