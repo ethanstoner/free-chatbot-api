@@ -43,15 +43,22 @@ pip install -r requirements.txt
 
 ### 3. Customize Personality
 
-Edit `chat.py` and modify the personality variables:
+**Option A: Using .env file (Recommended)**
 
-```python
-PERSONALITY_BACKGROUND = """Your character's background and history"""
+Edit your `.env` file and set the `PERSONALITY` variable:
 
-PERSONALITY_CURRENT_STATE = """How your character acts now"""
-
-PERSONALITY_RULES = """Speech patterns and behavior rules"""
+```bash
+PERSONALITY=You are a helpful and friendly AI assistant. You respond naturally and conversationally.
 ```
+
+For multi-line personalities, you can use `\n` for newlines:
+```bash
+PERSONALITY="You are a helpful assistant.\n\nYou keep responses concise and friendly."
+```
+
+**Option B: Edit chat.py directly**
+
+Edit `chat.py` and modify the default personality in the code.
 
 See `personality.example.py` for detailed examples and templates.
 
@@ -81,14 +88,10 @@ The bot automatically handles rate limits - you'll never hit them!
 
 ## Customizing Personality
 
-### Simple Example
+### Simple Example (in .env)
 
-```python
-PERSONALITY_BACKGROUND = """You are a helpful assistant."""
-
-PERSONALITY_CURRENT_STATE = """You respond naturally and helpfully."""
-
-PERSONALITY_RULES = """Keep responses concise and friendly."""
+```bash
+PERSONALITY=You are a helpful assistant. You respond naturally and helpfully. Keep responses concise and friendly.
 ```
 
 ### Complex Example
@@ -105,13 +108,17 @@ You can create any personality:
 - Fictional characters
 - Custom creations
 
+**Note:** The personality is loaded from the `PERSONALITY` environment variable in your `.env` file. If not set, a default friendly assistant personality is used.
+
 ## Files
 
-- `chat.py` - Main chatbot script (customize personality here)
+- `chat.py` - Main chatbot script
 - `personality.example.py` - Example personality templates
-- `.env.example` - Environment variables template
+- `.env.example` - Environment variables template (includes personality config)
 - `requirements.txt` - Python dependencies
-- `.env` - Your API keys (gitignored, create from .env.example)
+- `.env` - Your API keys and personality (gitignored, create from .env.example)
+- `shared_rate_limiter.py` - Rate limiting utilities (for advanced usage)
+- `turn_manager.py` - Turn management for multiple bots (for advanced usage)
 
 ## API Key
 
@@ -127,13 +134,13 @@ Get your free Groq API key:
 - 14,400 requests/day
 - ~200-500ms response time
 
-## Testing
+## Advanced Usage
 
-Run comprehensive tests:
-```bash
-python test_rate_limits.py    # Basic functionality tests
-python test_integration.py     # Full conversation simulation
-```
+The repository includes additional utilities:
+- `shared_rate_limiter.py` - For coordinating API requests across multiple bot instances
+- `turn_manager.py` - For managing turn-based responses when running multiple bots
+
+These are optional and only needed for advanced multi-bot setups.
 
 ## Notes
 
